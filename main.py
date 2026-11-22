@@ -1,14 +1,15 @@
 #EmyVuillemin TP3----------------------------------------------------------------------------------------------------------
 
 #import
-
+import animator
 import random
 import ui
 from maya import cmds
 
 
 def on_clicked():
-    print("Generate")    
+    print("Generate")
+    animator.animation_object(tool_window)    
         
 #---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -23,5 +24,11 @@ def main():
     tool_window.button.clicked.connect(on_clicked)
 
     tool_window.show()
+
+
+#Doit faire un ctrl + z ----------------------------------------------
+cmds.undoInfo(openChunk=True)
+
+
 
 main()
