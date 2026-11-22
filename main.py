@@ -11,7 +11,7 @@ importlib.reload(ui)
 importlib.reload(animator)
 #----------------------------------------------------------
 
-
+#Quand je clique sur le bouton generate==>print generete et ouvre animator.py + (fonction)
 def on_clicked():
     print("Generate")
     animator.animation_object(tool_window)    
@@ -19,7 +19,7 @@ def on_clicked():
 #---------------------------------------------------------------------------------------------------------------------------------------------
 
 def main():
-    global tool_window
+    global tool_window #Fenetre disparait pas
     try:
         tool_window.close()
     except Exception:
@@ -28,7 +28,7 @@ def main():
     tool_window.build_ui()
     tool_window.button.clicked.connect(on_clicked)
 
-    tool_window.show()
+    tool_window.show()#affiche
 
 
 #Doit faire un ctrl + z ----------------------------------------------
