@@ -8,18 +8,20 @@ from PySide6.QtWidgets import (
     QGridLayout,
 )
 
+#Tableau a outil pour generer une animation au hasard---------------------------------------------------------------------------
 class RandomAnimationGenerator(QWidget):
     
     def __init__(self):
         super().__init__()
 
-    #--------------------------------------------------------------------------------------------------------------------------------------------
+    #Fonction pour faire le tableau--------------------------------------------------------------------------------------
     def build_ui(self):
         #Creation du windows
         self.setWindowTitle("Random Animation Generator")
         self.setMinimumWidth(400)
         self.layout = QVBoxLayout(self)
 
+        #-------------------------------------------------------------------------------------------------------------------------------
         #Premiere section----------------------------------------------------------------------------------------------------------------
         #Animation Timing/ Temps animation-----------------------------------------------------------------------------------------------
 
@@ -44,10 +46,11 @@ class RandomAnimationGenerator(QWidget):
         animation_timing_layout.addWidget(self.nbr_step, 0, 3)
 
         self.layout.addWidget(animation_timing)
+
         #--------------------------------------------------------------------------------------------------------------------------------
         #Deuxieme section----------------------------------------------------------------------------------------------------------------
-
         #Translate Parameters/ Parametre du x,y,z----------------------------------------------------------------------------------------
+
         translate_parameters = QGroupBox("Translate Parameters")
         translate_parameters_layout = QGridLayout(translate_parameters)
 
@@ -96,8 +99,10 @@ class RandomAnimationGenerator(QWidget):
         translate_parameters_layout.addWidget(self.maximum_z, 1, 5)
         #----------------------------------------------------------------------------------------------------------------------
         self.layout.addWidget(translate_parameters)
+
         #---------------------------------------------------------------------------------------------------------------------
         #Troisieme section----------------------------------------------------------------------------------------------------
+        #Rotation object------------------------------------------------------------------------------------------------------
 
         rotate_parameters = QGroupBox("Rotate Parameters")
         rotate_parameters_layout = QGridLayout(rotate_parameters)
@@ -146,8 +151,10 @@ class RandomAnimationGenerator(QWidget):
         rotate_parameters_layout.addWidget(self.maximum_rotate_z, 1, 5)
         #-----------------------------------------------------------------------------------------------------------------------------
         self.layout.addWidget(rotate_parameters)
+
         #-----------------------------------------------------------------------------------------------------------------------------
         #Quatrieme section------------------------------------------------------------------------------------------------------------
+        #Scale object-----------------------------------------------------------------------------------------------------------------
 
         scale_parameters = QGroupBox("Scale Parameters")
         scale_parameters_layout = QGridLayout(scale_parameters)
@@ -197,6 +204,6 @@ class RandomAnimationGenerator(QWidget):
         self.layout.addWidget(scale_parameters)
         #--------------------------------------------------------------------------------------------------------------------------------
         
-        # button
+        #Button
         self.button = QPushButton("Generate")
         self.layout.addWidget(self.button)

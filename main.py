@@ -5,6 +5,11 @@ import animator
 import random
 import ui
 from maya import cmds
+#Grace au importlib ==> mon graph editor marche enfin!------
+import importlib
+importlib.reload(ui)
+importlib.reload(animator)
+#----------------------------------------------------------
 
 
 def on_clicked():
