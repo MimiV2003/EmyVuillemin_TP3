@@ -1,6 +1,6 @@
 #EmyVuillemin TP3----------------------------------------------------------------------------------------------------------
 
-#import
+#Import
 import animator
 import random
 import ui

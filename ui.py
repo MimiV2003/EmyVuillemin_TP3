@@ -1,3 +1,7 @@
+#Ui pour avoir un tableau--------------------------------------------------------------------
+#Le code est repetitif mais sa fonctionne----------------------------------------------------------------
+
+#Import
 from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
@@ -26,35 +30,39 @@ class RandomAnimationGenerator(QWidget):
         #Animation Timing/ Temps animation-----------------------------------------------------------------------------------------------
 
         animation_timing = QGroupBox("Animation Timing")
-        animation_timing_layout = QGridLayout(animation_timing)
+        animation_timing_layout = QGridLayout(animation_timing)#ligne et colonne
 
-        #Boite pour la duree avec fleche-------------------------------------------------------------------------------------------------------------
+        #Boite pour la duree avec fleche (QSpinBox)-------------------------------------------------------------------------------------------
 
         self.nbr_frame = QSpinBox()
-        self.nbr_frame.setRange(0, 1000)
-        self.nbr_frame.setValue(100)
+        self.nbr_frame.setRange(0, 1000)#limite
+        self.nbr_frame.setValue(100)#valeur initial
 
-        #Boite pour etape avec fleche----------------------------------------------------------------------------------------------------------------
+        #Boite pour step avec fleche----------------------------------------------------------------------------------------------------------------
 
         self.nbr_step = QSpinBox()
         self.nbr_step.setRange(0, 1000)
         self.nbr_step.setValue(30)
 
-        animation_timing_layout.addWidget(QLabel("Durations (Frames):"), 0, 0)# ===>Ordre pour le layout (QLabel ou "Nom", 0, 0)
-        animation_timing_layout.addWidget(self.nbr_frame, 0, 1)
+        animation_timing_layout.addWidget(QLabel("Durations (Frames):"), 0, 0)# ===>Ordre pour le layout (QLabel ==> "Nom" + , 0, 0)
+        animation_timing_layout.addWidget(self.nbr_frame, 0, 1)#QSpinBox defaut a 100
         animation_timing_layout.addWidget(QLabel("Step (Frames):"), 0, 2)
         animation_timing_layout.addWidget(self.nbr_step, 0, 3)
 
+        #--------------------------------------------------------------------------------
         self.layout.addWidget(animation_timing)
+        #----------------------------------------------------------------------------------
 
         #--------------------------------------------------------------------------------------------------------------------------------
         #Deuxieme section----------------------------------------------------------------------------------------------------------------
         #Translate Parameters/ Parametre du x,y,z----------------------------------------------------------------------------------------
 
         translate_parameters = QGroupBox("Translate Parameters")
-        translate_parameters_layout = QGridLayout(translate_parameters)
+        translate_parameters_layout = QGridLayout(translate_parameters)#ligne et colonne
 
         #Minimum X,Y,Z-------------------------------------------------------------------------------------------------------
+        #Entre (-1000 et 1000)
+
         #Minimum X en negatif
         self.minimum_negative_x = QSpinBox()
         self.minimum_negative_x.setRange(-1000, 1000)
@@ -67,8 +75,10 @@ class RandomAnimationGenerator(QWidget):
         self.minimum_negative_z = QSpinBox()
         self.minimum_negative_z.setRange(-1000, 1000)
         self.minimum_negative_z.setValue(-5)
+
         #-------------------------------------------------------------------------------------------------------------------
         #Maximum X,Y,Z------------------------------------------------------------------------------------------------------
+        #Pas de negatif dans maximum
 
         #Maximum X
         self.maximum_x = QSpinBox()
@@ -83,6 +93,8 @@ class RandomAnimationGenerator(QWidget):
         self.maximum_z.setRange(0, 1000)
         self.maximum_z.setValue(5)
         #---------------------------------------------------------------------------------------------------------------------
+
+        #Les chiffres aident a positionner l'emplacement (2 ranger et 6 colonnes)
         #Ranger 0
         translate_parameters_layout.addWidget(QLabel("min x:"), 0, 0)
         translate_parameters_layout.addWidget(self.minimum_negative_x, 0, 1)
@@ -97,10 +109,11 @@ class RandomAnimationGenerator(QWidget):
         translate_parameters_layout.addWidget(self.maximum_y, 1, 3)
         translate_parameters_layout.addWidget(QLabel("max z:"), 1, 4)
         translate_parameters_layout.addWidget(self.maximum_z, 1, 5)
+
         #----------------------------------------------------------------------------------------------------------------------
         self.layout.addWidget(translate_parameters)
-
         #---------------------------------------------------------------------------------------------------------------------
+
         #Troisieme section----------------------------------------------------------------------------------------------------
         #Rotation object------------------------------------------------------------------------------------------------------
 
@@ -108,6 +121,7 @@ class RandomAnimationGenerator(QWidget):
         rotate_parameters_layout = QGridLayout(rotate_parameters)
 
         #Minimum X,Y,Z Rotate--------------------------------------------------------------------------------------------------
+
         #Minimum X en negatif
         self.minimum_negative_rotate_x = QSpinBox()
         self.minimum_negative_rotate_x.setRange(-1000, 1000)
@@ -135,6 +149,8 @@ class RandomAnimationGenerator(QWidget):
         self.maximum_rotate_z.setRange(0, 1000)
         self.maximum_rotate_z.setValue(180)
         #-------------------------------------------------------------------------------------------------------------------------
+        #Meme chose que translate
+
         #Ranger 0
         rotate_parameters_layout.addWidget(QLabel("min x:"), 0, 0)
         rotate_parameters_layout.addWidget(self.minimum_negative_rotate_x, 0, 1)
@@ -149,10 +165,11 @@ class RandomAnimationGenerator(QWidget):
         rotate_parameters_layout.addWidget(self.maximum_rotate_y, 1, 3)
         rotate_parameters_layout.addWidget(QLabel("max z:"), 1, 4)
         rotate_parameters_layout.addWidget(self.maximum_rotate_z, 1, 5)
-        #-----------------------------------------------------------------------------------------------------------------------------
-        self.layout.addWidget(rotate_parameters)
 
         #-----------------------------------------------------------------------------------------------------------------------------
+        self.layout.addWidget(rotate_parameters)
+        #-----------------------------------------------------------------------------------------------------------------------------
+
         #Quatrieme section------------------------------------------------------------------------------------------------------------
         #Scale object-----------------------------------------------------------------------------------------------------------------
 
@@ -160,18 +177,21 @@ class RandomAnimationGenerator(QWidget):
         scale_parameters_layout = QGridLayout(scale_parameters)
 
         #Minimum X,Y,Z Scale-------------------------------------------------------------------------------------------------------------
-        #Minimum X en negatif
+        #jai pas mis de negatif pour le scale
+
+        #Minimum X
         self.minimum_scale_x = QSpinBox()
         self.minimum_scale_x.setRange(0, 1000)
         self.minimum_scale_x.setValue(1)
-        #Minimum Y en negatif
+        #Minimum Y
         self.minimum_scale_y = QSpinBox()
         self.minimum_scale_y.setRange(0, 1000)
         self.minimum_scale_y.setValue(1)
-        #Minimum Z en negatif
+        #Minimum Z 
         self.minimum_scale_z = QSpinBox()
         self.minimum_scale_z.setRange(0, 1000)
         self.minimum_scale_z.setValue(1)
+
         #Maximum X,Y,Z Scale-----------------------------------------------------------------------------------------------------------
         #Maximum X
         self.maximum_scale_x = QSpinBox()
@@ -186,6 +206,7 @@ class RandomAnimationGenerator(QWidget):
         self.maximum_scale_z.setRange(0, 1000)
         self.maximum_scale_z.setValue(2)
         #-----------------------------------------------------------------------------------------------------------------------------
+
         #Ranger 0
         scale_parameters_layout.addWidget(QLabel("min x:"), 0, 0)
         scale_parameters_layout.addWidget(self.minimum_scale_x, 0, 1)
@@ -200,6 +221,7 @@ class RandomAnimationGenerator(QWidget):
         scale_parameters_layout.addWidget(self.maximum_scale_y, 1, 3)
         scale_parameters_layout.addWidget(QLabel("max z:"), 1, 4)
         scale_parameters_layout.addWidget(self.maximum_scale_z, 1, 5)
+
         #--------------------------------------------------------------------------------------------------------------------------------
         self.layout.addWidget(scale_parameters)
         #--------------------------------------------------------------------------------------------------------------------------------
