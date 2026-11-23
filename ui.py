@@ -95,6 +95,8 @@ class RandomAnimationGenerator(QWidget):
         #---------------------------------------------------------------------------------------------------------------------
 
         #Les chiffres aident a positionner l'emplacement (2 ranger et 6 colonnes)
+        #translate_parameters_layout ==> QGridLayout
+        
         #Ranger 0
         translate_parameters_layout.addWidget(QLabel("min x:"), 0, 0)
         translate_parameters_layout.addWidget(self.minimum_negative_x, 0, 1)

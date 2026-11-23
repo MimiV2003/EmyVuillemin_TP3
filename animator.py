@@ -41,14 +41,12 @@ def animation_object(tool_window):
     
     try:
 
-        #cmds.playbackOptions(min=0, max=tool_window.nbr_frame.value())
-
         for selection in selection_maya:# prend un objet a la fois dans la liste et execute (==> fait une animation random pour chaque objet)
 
             if not selection:
                 return
 
-            frame = frame_step(tool_window)
+            frame = frame_step(tool_window)#cmds.playbackOptions(min=0, max=duration)
             cmds.cutKey(selection, clear=True)#efface les anciennes keys animation avant de mettre une nouvelle animation
 
             #-------------------------------------------------------------------------------------------------
